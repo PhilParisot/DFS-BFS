@@ -1,4 +1,6 @@
-﻿var root = new Node(1);
+﻿using System.Runtime.CompilerServices;
+
+var root = new Node(1);
 
 root.LNode = new Node(2) { LNode = new Node(4), RNode = new Node(5) };
 
@@ -15,6 +17,11 @@ InorderTraversal(root, InorderResult);
 List<int> PostorderResult = new();
 
 PostorderTraversal(root, PostorderResult);
+
+List<int> BreadthFirstResult = new();
+
+BreadthFirstTraversal(root, BreadthFirstResult);
+
 
 System.Console.WriteLine();
 
@@ -66,6 +73,29 @@ static void PostorderTraversal(Node parent, List<int> traversal)
     }
 
     traversal.Add(parent.Name);
+}
+
+static void BreadthFirstTraversal(Node parent, List<int> traversal)
+{
+    if (traversal.Count < 1)
+    {
+        traversal.Add(parent.Name);
+        if (parent.LNode != null)
+            traversal.Add(parent.LNode.Name);
+        if (parent.RNode != null)
+            traversal.Add(parent.RNode.Name);
+    }
+    else
+    {
+        if (parent.LNode != null)
+            traversal.Add(parent.LNode.Name);
+        if (parent.RNode != null)
+            traversal.Add(parent.RNode.Name);
+    }
+    if (parent.LNode != null)
+        BreadthFirstTraversal(parent.LNode, traversal);
+    if (parent.RNode != null)
+        BreadthFirstTraversal(parent.RNode, traversal);
 }
 
 class Node
