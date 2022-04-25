@@ -80,18 +80,14 @@ static void BreadthFirstTraversal(Node parent, List<int> traversal)
     if (traversal.Count < 1)
     {
         traversal.Add(parent.Name);
-        if (parent.LNode != null)
-            traversal.Add(parent.LNode.Name);
-        if (parent.RNode != null)
-            traversal.Add(parent.RNode.Name);
     }
-    else
-    {
-        if (parent.LNode != null)
-            traversal.Add(parent.LNode.Name);
-        if (parent.RNode != null)
-            traversal.Add(parent.RNode.Name);
-    }
+
+
+    if (parent.LNode != null)
+        traversal.Add(parent.LNode.Name);
+    if (parent.RNode != null)
+        traversal.Add(parent.RNode.Name);
+
     if (parent.LNode != null)
         BreadthFirstTraversal(parent.LNode, traversal);
     if (parent.RNode != null)
