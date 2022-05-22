@@ -31,7 +31,7 @@ System.Console.WriteLine();
 
 static void PreorderTraversal(Node parent, List<int> traversal)
 {
-    traversal.Add(parent.Name);
+    traversal.Add(parent.Num);
 
     if (parent.LNode != null)
     {
@@ -51,7 +51,7 @@ static void InorderTraversal(Node parent, List<int> traversal)
         InorderTraversal(parent.LNode, traversal);
     }
 
-    traversal.Add(parent.Name);
+    traversal.Add(parent.Num);
 
     if (parent.RNode != null)
     {
@@ -72,21 +72,21 @@ static void PostorderTraversal(Node parent, List<int> traversal)
         PostorderTraversal(parent.RNode, traversal);
     }
 
-    traversal.Add(parent.Name);
+    traversal.Add(parent.Num);
 }
 
 static void BreadthFirstTraversal(Node parent, List<int> traversal)
 {
     if (traversal.Count < 1)
     {
-        traversal.Add(parent.Name);
+        traversal.Add(parent.Num);
     }
 
 
     if (parent.LNode != null)
-        traversal.Add(parent.LNode.Name);
+        traversal.Add(parent.LNode.Num);
     if (parent.RNode != null)
-        traversal.Add(parent.RNode.Name);
+        traversal.Add(parent.RNode.Num);
 
     if (parent.LNode != null)
         BreadthFirstTraversal(parent.LNode, traversal);
@@ -96,12 +96,12 @@ static void BreadthFirstTraversal(Node parent, List<int> traversal)
 
 class Node
 {
-    public int Name { get; }
+    public int Num { get; }
     public Node? LNode { get; set; }
     public Node? RNode { get; set; }
 
     public Node(int name)
     {
-        this.Name = name;
+        this.Num = name;
     }
 }
